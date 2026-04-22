@@ -4,11 +4,15 @@ import Sidebar from './components/Sidebar'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import Products from './pages/Products'
 import Inventory from './pages/Inventory'
 import Suppliers from './pages/Suppliers'
 import Orders from './pages/Orders'
 import Shipments from './pages/Shipments'
 import Analytics from './pages/Analytics'
+import Notifications from './pages/Notifications'
+import SupplierApplications from './pages/SupplierApplications'
+import ActivityLogs from './pages/ActivityLogs'
 import Settings from './pages/Settings'
 import { AUTH_EXPIRED_EVENT, getAccessToken, getCurrentUserRole } from './lib/api'
 import { getHomePathByRole, isRouteAllowed } from './lib/rbac'
@@ -20,8 +24,13 @@ const APP_ROUTES = [
     render: () => <Dashboard />,
   },
   {
+    path: '/products',
+    roles: ['superadmin', 'admin', 'procurement', 'warehouse', 'viewer', 'supplier'],
+    render: () => <Products />,
+  },
+  {
     path: '/inventory',
-    roles: ['superadmin', 'admin', 'procurement'],
+    roles: ['superadmin', 'admin', 'procurement', 'warehouse'],
     render: () => <Inventory />,
   },
   {
@@ -43,6 +52,21 @@ const APP_ROUTES = [
     path: '/analytics',
     roles: ['superadmin', 'admin', 'procurement', 'warehouse'],
     render: (role) => <Analytics role={role} />,
+  },
+  {
+    path: '/notifications',
+    roles: ['superadmin', 'admin', 'procurement', 'warehouse', 'viewer', 'supplier'],
+    render: () => <Notifications />,
+  },
+  {
+    path: '/supplier-applications',
+    roles: ['superadmin', 'admin', 'procurement', 'warehouse'],
+    render: () => <SupplierApplications />,
+  },
+  {
+    path: '/activity-logs',
+    roles: ['superadmin', 'admin'],
+    render: () => <ActivityLogs />,
   },
   {
     path: '/settings',

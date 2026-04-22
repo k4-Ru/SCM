@@ -1,6 +1,48 @@
 import { NavLink, useNavigate } from 'react-router-dom'
+import {
+  FaArrowRightFromBracket,
+  FaBell,
+  FaBoxesStacked,
+  FaChartColumn,
+  FaChartLine,
+  FaClipboardList,
+  FaFileLines,
+  FaGear,
+  FaGauge,
+  FaShop,
+  FaTruck,
+  FaUsers,
+} from 'react-icons/fa6'
 import { getCurrentUserInfo, logout } from '../lib/api'
 import { getVisibleBottomItems, getVisibleNavItems } from '../lib/rbac'
+
+
+
+
+
+
+
+const SIDEBAR_ICONS = {
+  dashboard: FaGauge,
+  products: FaFileLines,
+  inventory: FaBoxesStacked,
+  suppliers: FaShop,
+  orders: FaClipboardList,
+  shipments: FaTruck,
+  analytics: FaChartLine,
+  notifications: FaBell,
+  supplierApps: FaUsers,
+  activityLogs: FaChartColumn,
+  settings: FaGear,
+}
+
+
+
+
+
+
+
+
 
 function Sidebar({ onLogout, role }) {
   const navigate = useNavigate()
@@ -15,6 +57,12 @@ function Sidebar({ onLogout, role }) {
     await logout()
     if (onLogout) onLogout()
     navigate('/login')
+  }
+
+  function renderNavIcon(iconKey) {
+    const Icon = SIDEBAR_ICONS[iconKey]
+    if (!Icon) return null
+    return <Icon className="text-sm shrink-0" aria-hidden="true" />
   }
 
   return (
@@ -45,7 +93,7 @@ function Sidebar({ onLogout, role }) {
                   }`
                 }
               >
-                <span>{item.icon}</span>
+                <span className="w-4 flex justify-center">{renderNavIcon(item.icon)}</span>
                 <span>{item.name}</span>
               </NavLink>
             </li>
@@ -66,7 +114,7 @@ function Sidebar({ onLogout, role }) {
               }`
             }
           >
-            <span>{item.icon}</span>
+            <span className="w-4 flex justify-center">{renderNavIcon(item.icon)}</span>
             <span>{item.name}</span>
           </NavLink>
         ))}
@@ -74,7 +122,9 @@ function Sidebar({ onLogout, role }) {
           onClick={handleLogout}
           className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#3e2719] hover:bg-[#e6b28d] hover:text-[#2b1a10] transition-colors w-full"
         >
-          <span>🚪</span>
+          <span className="w-4 flex justify-center">
+            <FaArrowRightFromBracket className="text-sm shrink-0" aria-hidden="true" />
+          </span>
           <span>Logout</span>
         </button>
       </div>

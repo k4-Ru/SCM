@@ -8,43 +8,70 @@ const ROLE_HOME_PATH = {
 }
 
 
-//need icons for nav items
+
+
+
+
 const NAV_ITEMS = [
   {
     name: 'Dashboard',
     path: '/dashboard',
-    icon: '',
+    icon: 'dashboard',
     roles: ['superadmin', 'admin', 'procurement', 'warehouse', 'supplier'],
+  },
+  {
+    name: 'Products',
+    path: '/products',
+    icon: 'products',
+    roles: ['superadmin', 'admin', 'procurement', 'warehouse', 'viewer', 'supplier'],
   },
   {
     name: 'Inventory',
     path: '/inventory',
-    icon: '',
-    roles: ['superadmin', 'admin', 'procurement'],
+    icon: 'inventory',
+    roles: ['superadmin', 'admin', 'procurement', 'warehouse'],
   },
   {
     name: 'Suppliers',
     path: '/suppliers',
-    icon: '',
+    icon: 'suppliers',
     roles: ['superadmin', 'admin', 'procurement', 'warehouse', 'supplier'],
   },
   {
     name: 'Orders',
     path: '/orders',
-    icon: '',
+    icon: 'orders',
     roles: ['superadmin', 'admin'],
   },
   {
     name: 'Shipments',
     path: '/shipments',
-    icon: '',
+    icon: 'shipments',
     roles: ['superadmin', 'admin', 'procurement', 'warehouse', 'supplier'],
   },
   {
     name: 'Analytics',
     path: '/analytics',
-    icon: '📈',
+    icon: 'analytics',
     roles: ['superadmin', 'admin', 'procurement', 'warehouse'],
+  },
+  {
+    name: 'Notifications',
+    path: '/notifications',
+    icon: 'notifications',
+    roles: ['superadmin', 'admin', 'procurement', 'warehouse', 'viewer', 'supplier'],
+  },
+  {
+    name: 'Supplier Apps',
+    path: '/supplier-applications',
+    icon: 'supplierApps',
+    roles: ['superadmin', 'admin', 'procurement', 'warehouse'],
+  },
+  {
+    name: 'Activity Logs',
+    path: '/activity-logs',
+    icon: 'activityLogs',
+    roles: ['superadmin', 'admin'],
   },
 ]
 
@@ -52,7 +79,7 @@ const BOTTOM_ITEMS = [
   {
     name: 'Settings',
     path: '/settings',
-    icon: '⚙️',
+    icon: 'settings',
     roles: ['superadmin', 'admin', 'procurement', 'warehouse', 'viewer', 'supplier'],
   },
 ]
